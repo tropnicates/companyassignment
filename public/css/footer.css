@@ -62,3 +62,29 @@ footer .socials a {
   color: #fcbf49;
   text-decoration: none;
 }
+
+
+/* Mobile first responsive design */
+@media (max-width: 480px) {
+  /* Adjust the font size and spacing for smaller screens */
+  .logo-text {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  footer p {
+    font-size: 16px;
+    padding: 5px;
+  }
+
+  footer .contact {
+    font-size: 1.2rem;
+  }
+
+  footer .contact span,
+  footer .contact i,
+  footer .contact a,
+  footer .socials a {
+    font-size: 16px;
+  }
+}
