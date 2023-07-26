@@ -155,7 +155,7 @@ main {
 
   .header-content p {
     font-size: 1.2rem; /* Set the font size for the paragraph on mobile screens */
-    margin-bottom: 30px; /* Adjust the margin for better spacing on mobile */
+    margin-bottom: 150px; /* Adjust the margin for better spacing on mobile */
   }
 
 }
