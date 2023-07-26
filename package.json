@@ -6,13 +6,13 @@
   "scripts": {
     "server": "nodemon server.js",
     "start": "node server.js",
-    "build": "webpack --config webpack.config.js"
+    "build": "npm i"
   },
   "keywords": [
     "blog",
     "nodejs"
   ],
-  "author": "I-Novotek Academy",
+  "author": "kundan kumar",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
