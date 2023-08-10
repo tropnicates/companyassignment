@@ -56,7 +56,7 @@ app.get('/', async (req, res) => {
   } catch (error) {
     res.render('index', { error: error.message });
   }
-});
+}); 
 
 //users route
 app.use('/api/v1/users', userRoutes);
