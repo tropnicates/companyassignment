@@ -64,9 +64,7 @@ footer .socials a {
 }
 
 
-/* Mobile first responsive design */
 @media (max-width: 480px) {
-  /* Adjust the font size and spacing for smaller screens */
   .logo-text {
     font-size: 2rem;
     margin-bottom: 10px;

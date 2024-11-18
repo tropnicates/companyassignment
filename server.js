@@ -14,21 +14,15 @@ require('./config/dbConnect');
 
 const app = express();
 
-//helpers
 app.locals.truncatePost = truncatePost;
 
-//middlewares
-//configure ejs
 app.set('view engine', 'ejs');
-//serve static files
 app.use(express.static(__dirname + '/public'));
 
-app.use(express.json()); //pass incoming data
-app.use(express.urlencoded({ extended: true })); //pass form data
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true })); 
 
-//method override
 app.use(methodOverride('_method'));
-//session config
 app.use(
   session({
     secret: process.env.SESSION_KEY,
@@ -38,7 +32,6 @@ app.use(
   })
 );
 
-//save the login user into locals
 app.use((req, res, next) => {
   if (req.session.userAuth) {
     res.locals.userAuth = req.session.userAuth;
@@ -48,7 +41,6 @@ app.use((req, res, next) => {
   next();
 });
 
-//render home
 app.get('/', async (req, res) => {
   try {
     const posts = await Post.find().populate('user');
@@ -58,17 +50,12 @@ app.get('/', async (req, res) => {
   }
 }); 
 
-//users route
 app.use('/api/v1/users', userRoutes);
 
-//posts route
 app.use('/api/v1/posts', postRoutes);
 
-//comments
 app.use('/api/v1/comments', commentRoutes);
 
-//Error handler middlewares
 app.use(globalErrHandler);
-//listen server
 const PORT = process.env.PORT || 9000;
 app.listen(PORT, console.log(`Server is running on PORT ${PORT}`));

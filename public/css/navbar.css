@@ -1,4 +1,4 @@
-/* Nav */
+
 nav {
   width: 100%;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
@@ -33,37 +33,35 @@ nav ul li a {
 .menu-icon {
   cursor: pointer;
   font-size: 2.5rem;
-  display: none; /* Hide the hamburger menu icon for larger screens */
+  display: none; 
 }
 
-/* Mobile first responsive design */
 @media (max-width: 675px) {
   .menu {
-    display: none; /* Hide the menu by default for mobile screens */
+    display: none; 
   }
 
   .menu-icon {
-    display: block; /* Show the hamburger menu icon for mobile screens */
+    display: block; 
   }
 
   input[type="checkbox"] {
-    display: none; /* Hide the checkbox input for mobile screens */
+    display: none;
   }
 
-  /* When the hamburger menu is checked, display the menu */
   input[type="checkbox"]:checked ~ .menu {
     display: flex;
   }
 }
-/* Mobile first responsive design */
+
 @media (min-width: 675px) {
-  /* ... other existing CSS rules ... */
+  
 
   input[type="checkbox"] {
-    /* Add the following CSS to hide the checkbox input */
+   
     display: none;
   }
 
-  /* ... other existing CSS rules ... */
+ 
 }
 

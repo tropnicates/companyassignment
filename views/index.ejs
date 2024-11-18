@@ -4,51 +4,65 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="/views/utils.js"></script> <!-- Move this line to the head section -->
+    <script src="/views/utils.js"></script> 
     <link rel="stylesheet" href="/css/style.css" />
     <title>TranquilTales</title>
   </head>
   <body>
-    <!-- nav -->
-    <%-include('partials/navbar.ejs') %>
-    <!-- header -->
+    <%- include('partials/navbar.ejs') %>
+
     <header class="header">
       <div class="header-content-1">
-        <h1>You write, We read</h1>
+        <h1>You create, We use</h1>
       </div>
       <div class="header-content-2">
         <p>
-            Change begins within; be the catalyst of positive transformation.
+          "Rev up the change from within; drive the engine of positive transformation."
         </p>
         <a href="/api/v1/posts/get-post-form">
-          <span>Create New Post</span>
+          <span>Create Car Post</span>
         </a>
       </div>
     </header>
-    <!-- Latest post title -->
 
     <div class="latest-post-title">
-      <!-- Icon -->
       <div class="icon">
         <i class="fas fa-book-open"></i>
       </div>
-      <h1>Latest Posts (20)</h1>
-      <p>
-        Empower Your Infinite Mind.
-      </p>
+      <p>"Explore the Variety of Cars."</p>
     </div>
 
-    <!-- content -->
 
-  
-    
-  
-    <section class="container-flex">
+<!-- Search Bar -->
+<div class="search-bar" style="text-align: center; margin: 20px auto; max-width: 800px; width: 100%;">
+  <input 
+    type="text" 
+    id="searchInput" 
+    placeholder="Search for cars..." 
+    onkeyup="searchPosts()" 
+    style="
+      width: 100%; 
+      max-width: auto; 
+      padding: 12px 15px; 
+      font-size: 1.1em; 
+      border-radius: 25px; 
+      border: 1px solid #ccc; 
+      outline: none; 
+      transition: border-color 0.3s ease-in-out;
+    "
+    onfocus="this.style.borderColor='#4CAF50'" 
+    onblur="this.style.borderColor='#ccc'"
+  />
+</div>
+
+
+
+    <section class="container-flex" id="postsContainer">
       <% if (posts?.length <= 0) { %>
         <h2>No Post Found</h2>
       <% } else { %>
         <% posts?.forEach((post) => { %>
-          <article class="post-content">
+          <article class="post-content" data-title="<%= post?.title %>" data-description="<%= post?.description %>" data-category="<%= post?.category %>">
             <div class="post-image">
               <img src="<%= post?.image %>" alt="" class="post-image-img" />
             </div>
@@ -66,7 +80,7 @@
             </p>
             <h1 class="post-title"><%= post?.title %></h1>
             <p class="post-body"><%= truncatePost(post?.description) %></p>
-            <!-- category -->
+
             <div class="post-category">
               <span>Category: <%= post?.category %></span>
             </div>
@@ -75,12 +89,33 @@
         <% }) %>
       <% } %>
     </section>
-    
-  
-    <!-- footer -->
-    <%-include('partials/footer.ejs') %>
-  </body>
-  <!-- index.ejs -->
-<script src="/views/utils.js"></script>
 
+    <%- include('partials/footer.ejs') %>
+  </body>
+
+  <!-- Include your script here -->
+  <script src="/views/utils.js"></script>
+
+  <script>
+    // Function to search and filter posts dynamically
+    function searchPosts() {
+      const input = document.getElementById('searchInput');
+      const filter = input.value.toLowerCase();
+      const postsContainer = document.getElementById('postsContainer');
+      const posts = postsContainer.getElementsByClassName('post-content');
+
+      for (let i = 0; i < posts.length; i++) {
+        const post = posts[i];
+        const title = post.getAttribute('data-title').toLowerCase();
+        const description = post.getAttribute('data-description').toLowerCase();
+        const category = post.getAttribute('data-category').toLowerCase();
+
+        if (title.includes(filter) || description.includes(filter) || category.includes(filter)) {
+          post.style.display = ''; // Show post
+        } else {
+          post.style.display = 'none'; // Hide post
+        }
+      }
+    }
+  </script>
 </html>

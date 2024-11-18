@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-//comment schema
+
 const commentSchema = new mongoose.Schema(
   {
     user: {
@@ -23,6 +23,6 @@ const commentSchema = new mongoose.Schema(
   }
 );
 
-//compile schema to form a model
+
 const Comment = mongoose.model("Comment", commentSchema);
 module.exports = Comment;

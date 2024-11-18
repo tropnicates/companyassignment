@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-//title, desc, category, image
+
 const postSchema = new mongoose.Schema(
   {
     title: {
@@ -38,9 +38,8 @@ const postSchema = new mongoose.Schema(
   }
 );
 
-//compile schema to form model
+
 
 const Post = mongoose.model("Post", postSchema);
 
-//export model
 module.exports = Post;

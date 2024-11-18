@@ -1,4 +1,3 @@
-// utils.js
 const truncatePost = (text, maxLength) => {
   if (text.length <= maxLength) {
     return text;
